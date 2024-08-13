@@ -62,10 +62,10 @@ class Board
     row, col = coordinates
 
     # Check the row
-    return true if @board[row].all? { |value| value == player.symbol }
+    return true if @board[row].all? { |value| value == player.symbol.colorize(player.color) }
 
     # Check the column
-    return true if @board.all? { |r| r[col] == player.symbol }
+    return true if @board.all? { |r| r[col] == player.symbol.colorize(player.color) }
 
     # Check the diagonal (top-left to bottom-right)
     return true if row == col && (0..2).all? { |i| @board[i][i] == player.symbol }
