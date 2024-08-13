@@ -68,10 +68,10 @@ class Board
     return true if @board.all? { |r| r[col] == player.symbol.colorize(player.color) }
 
     # Check the diagonal (top-left to bottom-right)
-    return true if row == col && (0..2).all? { |i| @board[i][i] == player.symbol }
+    return true if row == col && (0..2).all? { |i| @board[i][i] == player.symbol.colorize(player.color) }
 
     # Check the anti-diagonal (top-right to bottom-left)
-    return true if row + col == 2 && (0..2).all? { |i| @board[i][2 - i] == player.symbol }
+    return true if row + col == 2 && (0..2).all? { |i| @board[i][2 - i] == player.symbol.colorize(player.color) }
 
     return :tie if @board.flatten.none? { |val| val == "_" }
 
