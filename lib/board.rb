@@ -45,7 +45,13 @@ class Board
     return unless coordinates.all? { |coord| !coord.nil? }
 
     if (@board[coordinates[0]][coordinates[1]] == "_") # rubocop:disable Style/ParenthesesAroundCondition
-      @board[coordinates[0]][coordinates[1]] = player.symbol
+      colored_symbol = case player
+                       when Player1
+                         player.symbol.colorize(:blue)
+                       when Player2
+                         player.symbol.colorize(:yellow)
+                       end
+      @board[coordinates[0]][coordinates[1]] = colored_symbol
     else
       puts "place is already occupied".colorize(:red)
       false

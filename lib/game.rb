@@ -23,6 +23,7 @@ class Game
         if @board.winner?(@player1, @board.place_to_coordinate(place))
           puts "#{@player1.name} WINS!!".colorize(:green)
           @board.display
+          @player1.score += 1
           break
         end
       else
@@ -32,6 +33,7 @@ class Game
         if @board.winner?(@player2, @board.place_to_coordinate(place))
           puts "#{@player2.name} WINS!!".colorize(:green)
           @board.display
+          @player2.score += 1
           break
         end
       end
