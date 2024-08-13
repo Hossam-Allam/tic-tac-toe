@@ -52,7 +52,21 @@ class Board
     end
   end
 
-  def winner?
+  def winner?(player, coordinates)
+    row, col = coordinates
+
+    # Check the row
+    return true if @board[row].all? { |value| value == player.symbol }
+
+    # Check the column
+    return true if @board.all? { |r| r[col] == player.symbol }
+
+    # Check the diagonal (top-left to bottom-right)
+    return true if row == col && (0..2).all? { |i| @board[i][i] == player.symbol }
+
+    # Check the anti-diagonal (top-right to bottom-left)
+    return true if row + col == 2 && (0..2).all? { |i| @board[i][2 - i] == player.symbol }
+
     false
   end
 end
