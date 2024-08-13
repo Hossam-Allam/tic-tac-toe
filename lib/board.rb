@@ -73,6 +73,8 @@ class Board
     # Check the anti-diagonal (top-right to bottom-left)
     return true if row + col == 2 && (0..2).all? { |i| @board[i][2 - i] == player.symbol }
 
+    return :tie if @board.flatten.none? { |val| val == "_" }
+
     false
   end
 end
