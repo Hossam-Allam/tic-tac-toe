@@ -4,3 +4,5 @@ source "https://rubygems.org"
 
 gem 'rubocop', require: false
 # gem "rails"
+
+gem "colorize", "~> 1.1"

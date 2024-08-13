@@ -1,5 +1,8 @@
+require "colorize"
 # game board
 class Board
+  attr_accessor :board
+
   def initialize
     @board = Array.new(3) { Array.new(3, "_") }
   end
@@ -41,6 +44,15 @@ class Board
 
     return unless coordinates.all? { |coord| !coord.nil? }
 
-    @board[coordinates[0]][coordinates[1]] = player.symbol
+    if (@board[coordinates[0]][coordinates[1]] == "_") # rubocop:disable Style/ParenthesesAroundCondition
+      @board[coordinates[0]][coordinates[1]] = player.symbol
+    else
+      puts "place is already occupied".colorize(:red)
+      false
+    end
+  end
+
+  def winner?
+    false
   end
 end
